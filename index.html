@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALFA FA 4.0 Career Briefing</title>
+    <style>
+      :root {
+        --ink: #101522;
+        --muted: #667085;
+        --navy: #081a31;
+        --navy-2: #0d2747;
+        --red: #b41520;
+        --red-dark: #94101a;
+        --gold: #d5a847;
+        --line: #e5e7eb;
+        --paper: #fafafa;
+        --white: #ffffff;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+      }
+      a { color: inherit; text-decoration: none; }
+      .page { min-height: 100vh; overflow-x: hidden; }
+      .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+      .hero {
+        position: relative;
+        min-height: 92vh;
+        color: var(--white);
+        background:
+          linear-gradient(110deg, rgba(8, 26, 49, 0.98) 0%, rgba(8, 26, 49, 0.9) 46%, rgba(122, 15, 24, 0.82) 100%),
+          url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1800&q=80");
+        background-position: center;
+        background-size: cover;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 120px;
+        background: linear-gradient(180deg, transparent, var(--paper));
+        pointer-events: none;
+      }
+      .nav {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 24px 0;
+      }
+      .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+      .brand-mark {
+        display: grid;
+        width: 56px;
+        height: 56px;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.96);
+        color: var(--red);
+        font-size: 19px;
+        font-weight: 950;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+      }
+      .brand strong { display: block; color: var(--gold); font-size: 13px; line-height: 1.2; }
+      .brand span { color: rgba(255, 255, 255, 0.72); font-size: 13px; }
+      .nav-links { display: flex; align-items: center; gap: 20px; color: rgba(255, 255, 255, 0.78); font-size: 14px; font-weight: 700; }
+      .nav-links a:last-child { color: var(--white); border-bottom: 2px solid var(--gold); padding-bottom: 4px; }
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 0.98fr 1.02fr;
+        gap: 52px;
+        align-items: center;
+        padding: 58px 0 120px;
+      }
+      .hero h1 {
+        max-width: 640px;
+        margin: 0;
+        font-size: clamp(40px, 4.9vw, 64px);
+        font-weight: 950;
+        line-height: 1.1;
+        text-wrap: balance;
+      }
+      .hero h1 span { display: block; color: var(--gold); }
+      .lead { max-width: 620px; margin: 24px 0 0; color: rgba(255,255,255,.82); font-size: 20px; line-height: 1.8; }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+      .button {
+        display: inline-flex;
+        min-height: 56px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 14px;
+        padding: 0 22px;
+        font-weight: 900;
+        transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+      }
+      .button:hover { transform: translateY(-2px); }
+      .button.primary { background: var(--red); color: var(--white); box-shadow: 0 20px 42px rgba(0,0,0,.22); }
+      .button.primary:hover { background: var(--red-dark); }
+      .button.secondary { border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.1); color: var(--white); }
+      .note { margin-top: 16px; color: rgba(255,255,255,.64); font-size: 14px; }
+      .briefing-panel { align-self: stretch; border: 1px solid rgba(255,255,255,.18); border-radius: 28px; background: rgba(255,255,255,.12); padding: 16px; box-shadow: 0 28px 70px rgba(0,0,0,.28); backdrop-filter: blur(18px); }
+      .panel-inner { height: 100%; border-radius: 20px; background: var(--white); color: var(--ink); padding: 28px; }
+      .panel-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+      .label { margin: 0 0 8px; color: var(--red); font-size: 12px; font-weight: 950; letter-spacing: .16em; text-transform: uppercase; }
+      .panel-inner h2, .section h2 { margin: 0; font-size: clamp(28px, 3.5vw, 42px); font-weight: 950; line-height: 1.2; }
+      .panel-inner p, .section p { line-height: 1.75; }
+      .shield { display: grid; width: 54px; height: 54px; flex: 0 0 auto; place-items: center; border-radius: 16px; background: #fff7e4; color: var(--gold); font-size: 28px; }
+      .feature-list { display: grid; gap: 12px; margin-top: 24px; }
+      .feature-item { display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: start; border: 1px solid #eef0f3; border-radius: 14px; background: #fbfcfd; padding: 14px; }
+      .icon { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 12px; background: #fff1f2; color: var(--red); font-size: 21px; }
+      .feature-item strong { display: block; margin-bottom: 3px; }
+      .feature-item span { color: var(--muted); font-size: 14px; line-height: 1.55; }
+      .section { padding: 76px 0; }
+      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+      .block { border: 1px solid var(--line); border-radius: 24px; background: var(--white); padding: 34px; }
+      .block.dark { border-color: transparent; background: var(--navy); color: var(--white); }
+      .check-list { display: grid; gap: 18px; margin-top: 26px; }
+      .check-row { display: grid; grid-template-columns: 24px 1fr; gap: 12px; color: #344054; line-height: 1.7; }
+      .dark .check-row { color: rgba(255,255,255,.84); }
+      .check { color: var(--red); font-weight: 950; }
+      .dark .check { color: var(--gold); }
+      .comparison-wrap { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .section-head { max-width: 760px; }
+      .section-head p { margin: 0 0 8px; }
+      .comparison { margin-top: 34px; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; }
+      .comparison-row { display: grid; grid-template-columns: 1fr 1fr; }
+      .comparison-row > div { min-height: 62px; padding: 18px 22px; font-weight: 850; }
+      .comparison-row > div:first-child { border-right: 1px solid var(--line); color: #475467; }
+      .comparison-row + .comparison-row { border-top: 1px solid var(--line); }
+      .comparison-row.head { background: var(--navy); }
+      .comparison-row.head > div { color: var(--white); }
+      .comparison-row.head > div:last-child { color: var(--gold); }
+      .comparison-row > div:last-child { color: var(--red); }
+      .steps-section { background: var(--navy); color: var(--white); }
+      .steps-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 58px; align-items: start; }
+      .steps { display: grid; gap: 14px; }
+      .step { display: grid; grid-template-columns: 46px 1fr; gap: 16px; align-items: center; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; background: rgba(255,255,255,.08); padding: 16px; }
+      .step-number { display: grid; width: 46px; height: 46px; place-items: center; border-radius: 999px; background: var(--gold); color: var(--navy); font-weight: 950; }
+      .final { text-align: center; }
+      .final p { max-width: 680px; margin: 16px auto 0; color: var(--muted); }
+      .final .cta-row { justify-content: center; }
+      .final .secondary { border-color: var(--line); background: var(--white); color: var(--ink); }
+      @media (max-width: 860px) {
+        .container { width: min(100% - 28px, 1160px); }
+        .nav-links { display: none; }
+        .hero { min-height: auto; }
+        .hero-grid, .two-col, .steps-grid { grid-template-columns: 1fr; }
+        .hero-grid { gap: 34px; padding: 32px 0 88px; }
+        .lead { font-size: 17px; }
+        .button { width: 100%; }
+        .section { padding: 54px 0; }
+        .block, .panel-inner { padding: 24px; }
+        .comparison-row { grid-template-columns: 1fr; }
+        .comparison-row > div:first-child { border-right: 0; border-bottom: 1px solid var(--line); }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="container">
+          <header class="nav">
+            <a class="brand" href="#" aria-label="ALFA Consultant Unity">
+              <div class="brand-mark">ALFA</div>
+              <div>
+                <strong>ALFA CONSULTANT UNITY</strong>
+                <span>Financial Advisor 4.0 Career</span>
+              </div>
+            </a>
+            <nav class="nav-links" aria-label="Primary">
+              <a href="#fit">เหมาะกับใคร</a>
+              <a href="#role">บทบาท FA 4.0</a>
+              <a href="#briefing">จอง Briefing</a>
+            </nav>
+          </header>
+          <div class="hero-grid">
+            <div>
+              <h1>เส้นทางอาชีพสำหรับคนที่อยากโต<span>โดยไม่ต้องเริ่มแบบไร้ทิศทาง</span></h1>
+              <p class="lead">ศึกษาอาชีพ Financial Advisor 4.0 กับ ALFA ผ่านระบบอบรม Mentor และ Career Roadmap สำหรับคนทำงานที่อยากต่อยอดทักษะการสื่อสาร การเงิน และการดูแลลูกค้าให้เป็นอาชีพระยะยาว</p>
+              <div class="cta-row">
+                <a class="button primary" href="https://m.me/2122855638010881" target="_blank" rel="noopener noreferrer">ทัก Messenger เพื่อรับข้อมูล →</a>
+                <a class="button secondary" href="https://forms.gle/your-form-link" target="_blank" rel="noopener noreferrer">จอง Private Briefing</a>
+              </div>
+              <p class="note">มาคุยเพื่อศึกษาเส้นทางก่อน ยังไม่ต้องตัดสินใจทันที</p>
+            </div>
+            <aside class="briefing-panel" aria-label="Private Career Briefing">
+              <div class="panel-inner">
+                <div class="panel-top"><div><p class="label">Private Career Briefing</p><h2>FA 4.0 คืออะไร?</h2></div><div class="shield">✓</div></div>
+                <p>บทบาท Financial Advisor ที่เน้นการให้คำปรึกษาทางการเงิน วางแผนความเสี่ยง การออม และดูแลลูกค้าในระยะยาว โดยมีระบบช่วยเริ่มต้นอย่างมืออาชีพ</p>
+                <div class="feature-list">
+                  <div class="feature-item"><div class="icon">🎓</div><div><strong>ระบบอบรม</strong><span>เริ่มต้นอย่างมีโครงสร้าง ไม่ต้องลองผิดลองถูกคนเดียว</span></div></div>
+                  <div class="feature-item"><div class="icon">👥</div><div><strong>Mentor และทีมสนับสนุน</strong><span>มีคนช่วยให้ Feedback และแนะนำแนวทางการเติบโต</span></div></div>
+                  <div class="feature-item"><div class="icon">◎</div><div><strong>Career Roadmap</strong><span>เห็นภาพเส้นทางการพัฒนาและเป้าหมายอาชีพชัดเจนขึ้น</span></div></div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="fit"><div class="container two-col"><div class="block"><h2>คุณกำลังเจอสิ่งเหล่านี้อยู่ไหม?</h2><div class="check-list"><div class="check-row"><span class="check">✓</span><span>ทำงานเก่งขึ้น แต่รายได้ยังโตไม่ทันความสามารถ</span></div><div class="check-row"><span class="check">✓</span><span>อยากเติบโต แต่ไม่อยากเริ่มอาชีพใหม่แบบไร้ทิศทาง</span></div><div class="check-row"><span class="check">✓</span><span>ไม่อยากขายแบบตื๊อคนรู้จัก หรือกดดันลูกค้า</span></div><div class="check-row"><span class="check">✓</span><span>อยากมี Career Path ที่ชัดเจนกว่าเส้นทางเดิม</span></div></div></div><div class="block dark"><h2>FA 4.0 เหมาะกับใคร?</h2><div class="check-list"><div class="check-row"><span class="check">✓</span><span>Sales / Business Development ที่อยากต่อยอดทักษะการสื่อสาร</span></div><div class="check-row"><span class="check">✓</span><span>Banking / Finance ที่สนใจงานวางแผนการเงินและดูแลลูกค้า</span></div><div class="check-row"><span class="check">✓</span><span>Manager / Professional ที่อยากสร้างอาชีพระยะยาว</span></div><div class="check-row"><span class="check">✓</span><span>คนทำงานที่มีวินัย พร้อมเรียนรู้ และอยากเติบโตจากผลงาน</span></div></div></div></div></section>
+      <section class="section comparison-wrap" id="role"><div class="container"><div class="section-head"><p class="label">Career Reframe</p><h2>ไม่ใช่แค่ “ขายประกัน” แต่คือบทบาทที่ปรึกษาที่ลูกค้าไว้วางใจ</h2></div><div class="comparison"><div class="comparison-row head"><div>ขายประกันแบบเดิม</div><div>Financial Advisor 4.0</div></div><div class="comparison-row"><div>เน้นขายสินค้า</div><div>เน้นให้คำปรึกษา</div></div><div class="comparison-row"><div>ตื๊อคนรู้จัก</div><div>สร้างความน่าเชื่อถือ</div></div><div class="comparison-row"><div>พูดเรื่องกรมธรรม์</div><div>พูดเรื่องแผนชีวิตและการเงิน</div></div><div class="comparison-row"><div>ปิดการขายระยะสั้น</div><div>สร้างความสัมพันธ์ระยะยาว</div></div></div></div></section>
+      <section class="section steps-section" id="briefing"><div class="container steps-grid"><div><p class="label" style="color: var(--gold)">Next Step</p><h2>ขั้นตอนการเข้าร่วม Private Career Briefing</h2><p style="color: rgba(255,255,255,.74)">เราไม่ได้ต้องการให้คุณตัดสินใจทันที แต่ต้องการให้คุณได้รับข้อมูลที่ถูกต้องก่อนเลือกเส้นทางอาชีพใหม่</p></div><div class="steps"><div class="step"><div class="step-number">1</div><strong>กรอกข้อมูลหรือทัก Messenger</strong></div><div class="step"><div class="step-number">2</div><strong>ทีม ALFA ติดต่อกลับเพื่อคัดกรองเบื้องต้น</strong></div><div class="step"><div class="step-number">3</div><strong>เข้าร่วม Private Career Briefing / Coffee Chat</strong></div><div class="step"><div class="step-number">4</div><strong>ประเมินว่าเส้นทาง FA 4.0 เหมาะกับคุณหรือไม่</strong></div></div></div></section>
+      <section class="section final"><div class="container"><div class="brand-mark" style="margin: 0 auto 18px">ALFA</div><h2>สนใจศึกษา FA 4.0?</h2><p>ทักเข้ามาเพื่อรับข้อมูล หรือจองรอบพูดคุยส่วนตัวกับทีม ALFA ได้เลยครับ มาคุยเพื่อเข้าใจก่อน ยังไม่ต้องตัดสินใจทันที</p><div class="cta-row"><a class="button primary" href="https://m.me/2122855638010881" target="_blank" rel="noopener noreferrer">ทัก Messenger รับข้อมูล FA 4.0 →</a><a class="button secondary" href="https://forms.gle/your-form-link" target="_blank" rel="noopener noreferrer">กรอกฟอร์มจอง Briefing</a></div></div></section>
+    </main>
+  </body>
+</html>
