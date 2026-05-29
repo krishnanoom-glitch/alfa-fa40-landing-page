@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-label="ALFA Consultant Unity">
+  <rect width="520" height="150" rx="16" fill="#fff"/>
+  <circle cx="72" cy="75" r="55" fill="#fff" stroke="#2a5d7e" stroke-width="5"/>
+  <path d="M77 25c-31 8-49 32-47 59 2 23 20 40 45 43-17-14-17-32-3-47 11-12 24-18 44-30-9-18-23-27-39-25z" fill="#d75a52"/>
+  <path d="M68 125c31-8 49-32 47-59-2-23-20-40-45-43 17 14 17 32 3 47-11 12-24 18-44 30 9 18 23 27 39 25z" fill="#275f84" transform="rotate(180 72 75)"/>
+  <path d="M56 65c13-16 35-15 49 0 11 12 12 28 0 41-4-17-15-19-27-26-12-7-20-14-22-15z" fill="#275f84"/>
+  <path d="M89 85c-13 16-35 15-49 0-11-12-12-28 0-41 4 17 15 19 27 26 12 7 20 14 22 15z" fill="#d75a52"/>
+  <text x="148" y="82" font-family="Arial Black,Arial,sans-serif" font-size="66" font-weight="900" fill="#211d1f">ALFA</text>
+  <rect x="150" y="92" width="325" height="32" rx="9" fill="#211d1f"/>
+  <text x="165" y="116" font-family="Arial, sans-serif" font-size="25" fill="#fff" letter-spacing="2">CONSULTANT UNITY</text>
+  <text x="173" y="143" font-family="Arial, sans-serif" font-size="22" fill="#211d1f" letter-spacing="2">“ FINANCIAL BEST FRIEND ”</text>
+</svg>
